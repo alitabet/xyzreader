@@ -1,5 +1,6 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="4dp"
@@ -14,59 +15,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<ImageView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="200dp"-->
-            <!--android:scaleType="centerCrop"-->
-            <!--android:id="@+id/thumbnail"-->
-            <!--android:background="@color/photo_placeholder"/>-->
-
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
-            android:layout_height="0dp"
-            android:background="@color/photo_placeholder" />
+            android:layout_height="0dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <!--&lt;!&ndash;suppress AndroidLintContentDescription &ndash;&gt;-->
-        <!--<com.example.xyzreader.ui.DynamicHeightNetworkImageView-->
-            <!--android:id="@+id/thumbnail"-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:background="@color/photo_placeholder" />-->
-
-        <TextView
-            android:id="@+id/article_title"
-            style="@style/TextAppearance.AppCompat.Subhead"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="4dp"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:ellipsize="end"
-            android:maxLines="4" />
+            android:layout_height="match_parent"
+            android:background="@drawable/thumb_background_protection" />
 
-        <TextView
-            android:id="@+id/article_subtitle"
-            style="@style/TextAppearance.AppCompat.Body1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
-            android:textColor="#fff"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:ellipsize="end" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/article_title"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="4dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:maxLines="4"
+                tools:text="TITLE"/>
+
+            <TextView
+                android:id="@+id/article_subtitle"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                android:textColor="#fff"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:ellipsize="end"
+                tools:text="Subtitle"/>
+        </LinearLayout>
     </FrameLayout>
 
 </android.support.v7.widget.CardView>
