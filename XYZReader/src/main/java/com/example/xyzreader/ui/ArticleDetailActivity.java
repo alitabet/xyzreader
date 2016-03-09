@@ -75,6 +75,10 @@ public class ArticleDetailActivity extends AppCompatActivity
             }
         });
 
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 //        mUpButtonContainer = findViewById(R.id.up_container);
 //
 //        mUpButton = findViewById(R.id.action_up);
