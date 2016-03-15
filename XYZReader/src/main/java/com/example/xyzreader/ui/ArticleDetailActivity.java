@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowInsets;
 
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
@@ -96,7 +97,7 @@ public class ArticleDetailActivity extends AppCompatActivity
 //                    view.onApplyWindowInsets(windowInsets);
 //                    mTopInset = windowInsets.getSystemWindowInsetTop();
 //                    mUpButtonContainer.setTranslationY(mTopInset);
-//                    updateUpButtonPosition();
+////                    updateUpButtonPosition();
 //                    return windowInsets;
 //                }
 //            });
