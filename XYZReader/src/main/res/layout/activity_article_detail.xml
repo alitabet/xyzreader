@@ -37,13 +37,13 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/photo_background_protection" />
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/progress_bar"
-                android:progressDrawable="@drawable/circular_progress_bar"
-                android:layout_centerInParent="true" />
+            <!--<ProgressBar-->
+                <!--style="?android:attr/progressBarStyleLarge"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:id="@+id/progress_bar"-->
+                <!--android:progressDrawable="@drawable/circular_progress_bar"-->
+                <!--android:layout_centerInParent="true" />-->
 
             <com.example.xyzreader.ui.MaxWidthLinearLayout
                 android:orientation="vertical"
