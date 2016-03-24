@@ -19,7 +19,6 @@ import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -40,18 +39,13 @@ public class ArticleDetailActivity extends AppCompatActivity
     private long mStartId;
 
     private long mSelectedItemId;
-    private int mSelectedItemUpButtonFloor = Integer.MAX_VALUE;
-    private int mTopInset;
 
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
-    private View mUpButtonContainer;
-    private View mUpButton;
 
     private ImageView mPhotoView;
     private TextView mTitleView;
     private TextView mBylineView;
-    private ProgressBar mBar; // Progress Bar
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,17 +64,12 @@ public class ArticleDetailActivity extends AppCompatActivity
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitleEnabled(false);
 
-        // Inflate the loading indicator.
-        // Bar is initially not visible
-//        mBar = (ProgressBar) findViewById(R.id.progress_bar);
-//        mBar.setVisibility(View.GONE);
         mPhotoView = (ImageView) findViewById(R.id.photo);
         mTitleView = (TextView) findViewById(R.id.article_title);
         mBylineView = (TextView) findViewById(R.id.article_byline);
         mBylineView.setMovementMethod(new LinkMovementMethod());
 
         getLoaderManager().initLoader(0, null, this);
-        //setViews();
 
         findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,18 +88,8 @@ public class ArticleDetailActivity extends AppCompatActivity
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
-//        mPager.setPageMargin((int) TypedValue
-//                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
-//        mPager.setPageMarginDrawable(new ColorDrawable(0x22000000));
-        mPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                super.onPageScrollStateChanged(state);
-//                mPhotoView.animate()
-//                        .alpha((state == ViewPager.SCROLL_STATE_IDLE) ? 1f : 0f)
-//                        .setDuration(1000);
-            }
 
+        mPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
@@ -121,52 +100,6 @@ public class ArticleDetailActivity extends AppCompatActivity
             }
 
         });
-
-//        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-////            @Override
-////            public void onPageScrollStateChanged(int state) {
-////                super.onPageScrollStateChanged(state);
-//                mUpButton.animate()
-//                        .alpha((state == ViewPager.SCROLL_STATE_IDLE) ? 1f : 0f)
-//                        .setDuration(300);
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                if (mCursor != null) {
-//                    mCursor.moveToPosition(position);
-//                }
-//                mSelectedItemId = mCursor.getLong(ArticleLoader.Query._ID);
-////                updateUpButtonPosition();
-//            }
-//        });
-
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-//        mUpButtonContainer = findViewById(R.id.up_container);
-//
-//        mUpButton = findViewById(R.id.action_up);
-//        mUpButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                onSupportNavigateUp();
-//            }
-//        });
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            mUpButtonContainer.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
-//                @Override
-//                public WindowInsets onApplyWindowInsets(View view, WindowInsets windowInsets) {
-//                    view.onApplyWindowInsets(windowInsets);
-//                    mTopInset = windowInsets.getSystemWindowInsetTop();
-//                    mUpButtonContainer.setTranslationY(mTopInset);
-////                    updateUpButtonPosition();
-//                    return windowInsets;
-//                }
-//            });
-//        }
 
         if (savedInstanceState == null) {
             if (getIntent() != null && getIntent().getData() != null) {
@@ -185,11 +118,8 @@ public class ArticleDetailActivity extends AppCompatActivity
                             System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
                             DateUtils.FORMAT_ABBREV_ALL).toString()
                             + " by " + mCursor.getString(ArticleLoader.Query.AUTHOR));
-            mPhotoView.animate()
-                    .alpha(0f)
-                    .setDuration(1000);
-//            mPhotoView.setImageResource(R.drawable.photo_background_protection);
-//            mBar.setVisibility(View.VISIBLE);
+
+            mPhotoView.setImageResource(R.drawable.photo_background_protection);
             ImageLoaderHelper.getInstance(this).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
@@ -197,16 +127,11 @@ public class ArticleDetailActivity extends AppCompatActivity
                             Bitmap bitmap = imageContainer.getBitmap();
                             if (bitmap != null) {
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
-                                mPhotoView.animate()
-                                        .alpha(1f)
-                                        .setDuration(1000);
-//                                mBar.setVisibility(View.GONE);
                             }
                         }
 
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
-//                            mBar.setVisibility(View.GONE);
                         }
                     });
         } else {
@@ -248,18 +173,6 @@ public class ArticleDetailActivity extends AppCompatActivity
         mPagerAdapter.notifyDataSetChanged();
     }
 
-//    public void onUpButtonFloorChanged(long itemId, ArticleDetailFragment fragment) {
-//        if (itemId == mSelectedItemId) {
-//            mSelectedItemUpButtonFloor = fragment.getUpButtonFloor();
-////            updateUpButtonPosition();
-//        }
-//    }
-
-//    private void updateUpButtonPosition() {
-//        int upButtonNormalBottom = mTopInset + mUpButton.getHeight();
-//        mUpButton.setTranslationY(Math.min(mSelectedItemUpButtonFloor - upButtonNormalBottom, 0));
-//    }
-
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -269,10 +182,6 @@ public class ArticleDetailActivity extends AppCompatActivity
         public void setPrimaryItem(ViewGroup container, int position, Object object) {
             super.setPrimaryItem(container, position, object);
             ArticleDetailFragment fragment = (ArticleDetailFragment) object;
-//            if (fragment != null) {
-//                mSelectedItemUpButtonFloor = fragment.getUpButtonFloor();
-////                updateUpButtonPosition();
-//            }
         }
 
         @Override

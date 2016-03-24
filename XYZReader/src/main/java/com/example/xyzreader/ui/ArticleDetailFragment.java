@@ -24,14 +24,12 @@ import com.example.xyzreader.data.ArticleLoader;
 public class ArticleDetailFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "ArticleDetailFragment";
-    private static final String HASH_TAG = "#XYZReader";
 
     public static final String ARG_ITEM_ID = "item_id";
 
     private Cursor mCursor;
     private long mItemId;
     private View mRootView;
-//    private ImageView mPhotoView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -79,30 +77,6 @@ public class ArticleDetailFragment extends Fragment implements
             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
 
-//        final Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.detail_toolbar);
-//        getActivityCast().setSupportActionBar(toolbar);
-//        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
-//        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar);
-//        collapsingToolbarLayout.setTitleEnabled(false);
-////
-//        mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
-//
-//        mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (mCursor != null) {
-//                    String shareText = mCursor.getString(ArticleLoader.Query.TITLE)
-//                            + " by " + mCursor.getString(ArticleLoader.Query.AUTHOR)
-//                            + " " + HASH_TAG;
-//                    startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
-//                            .setType("text/plain")
-//                            .setText(shareText)
-//                            .getIntent(), getString(R.string.action_share)));
-//                }
-//            }
-//        });
-
         bindViews();
         return mRootView;
     }
@@ -112,9 +86,6 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-//        TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
-//        TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
-//        bylineView.setMovementMethod(new LinkMovementMethod());
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
         bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
@@ -123,34 +94,9 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
 
-//            titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
-//            bylineView.setText(
-//                    DateUtils.getRelativeTimeSpanString(
-//                    mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
-//                    System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
-//                    DateUtils.FORMAT_ABBREV_ALL).toString()
-//                            + " by " + mCursor.getString(ArticleLoader.Query.AUTHOR));
-
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
-//            ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
-//                    .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
-//                        @Override
-//                        public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
-//                            Bitmap bitmap = imageContainer.getBitmap();
-//                            if (bitmap != null) {
-//                                mPhotoView.setImageBitmap(imageContainer.getBitmap());
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onErrorResponse(VolleyError volleyError) {
-//
-//                        }
-//                    });
         } else {
             mRootView.setVisibility(View.GONE);
-//            titleView.setText("N/A");
-//            bylineView.setText("N/A" );
             bodyView.setText("N/A");
         }
     }

@@ -37,14 +37,6 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/photo_background_protection" />
 
-            <!--<ProgressBar-->
-                <!--style="?android:attr/progressBarStyleLarge"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:id="@+id/progress_bar"-->
-                <!--android:progressDrawable="@drawable/circular_progress_bar"-->
-                <!--android:layout_centerInParent="true" />-->
-
             <com.example.xyzreader.ui.MaxWidthLinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -65,8 +57,6 @@
                     android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
                     android:lineSpacingMultiplier="0.9"
                     tools:text="TITLE"/>
-                <!--android:textStyle="bold"
-                android:textSize="@dimen/detail_title_text_size"-->
 
                 <TextView
                     android:id="@+id/article_byline"
@@ -105,30 +95,3 @@
         android:contentDescription="@string/action_share"/>
 
 </android.support.design.widget.CoordinatorLayout>
-
-    <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-
-    <!--<android.support.v4.view.ViewPager-->
-        <!--android:id="@+id/pager"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
-
-    <!--&lt;!&ndash;<FrameLayout&ndash;&gt;-->
-        <!--&lt;!&ndash;android:id="@+id/up_container"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:background="@android:color/transparent"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_height="?actionBarSize">&ndash;&gt;-->
-
-        <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
-            <!--&lt;!&ndash;android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:id="@+id/action_up"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_width="56dp"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:layout_height="?actionBarSize"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:background="?selectableItemBackgroundBorderless"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:contentDescription="@string/up"&ndash;&gt;-->
-            <!--&lt;!&ndash;android:src="@drawable/ic_arrow_back" />&ndash;&gt;-->
-    <!--&lt;!&ndash;</FrameLayout>&ndash;&gt;-->
-<!--</FrameLayout>-->
